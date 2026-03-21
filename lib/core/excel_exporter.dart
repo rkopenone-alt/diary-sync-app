@@ -11,12 +11,12 @@ class ExcelExporter {
     
     // Header Row
     sheetObject.appendRow([
-      TextCellValue('S.No'),
-      TextCellValue('Date'),
-      TextCellValue('Time'),
-      TextCellValue('Whom Met'),
-      TextCellValue('Description'),
-      TextCellValue('Reminder'),
+      'S.No',
+      'Date',
+      'Time',
+      'Whom Met',
+      'Description',
+      'Reminder',
     ]);
 
     // Data Rows
@@ -31,12 +31,12 @@ class ExcelExporter {
 
     for (var log in logs) {
       sheetObject.appendRow([
-        IntCellValue(log.sno),
-        TextCellValue(log.date),
-        TextCellValue(log.time),
-        TextCellValue(log.whomMet),
-        TextCellValue(log.description),
-        TextCellValue(log.reminderTime ?? ''),
+        log.sno,
+        log.date,
+        log.time,
+        log.whomMet,
+        log.description,
+        log.reminderTime ?? '',
       ]);
     }
 

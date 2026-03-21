@@ -115,27 +115,29 @@ class _AddLogScreenState extends State<AddLogScreen> with SingleTickerProviderSt
   Widget _buildModeB() {
     return Padding(
       padding: const EdgeInsets.all(16),
-      children: [
-        Expanded(
-          child: TextField(
-            controller: _smartTextCtrl,
-            maxLines: 10,
-            decoration: const InputDecoration(
-              hintText: 'e.g. Met Ravi today at 4pm, he asked me to send the report tomorrow.',
-              border: OutlineInputBorder(),
+      child: Column(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _smartTextCtrl,
+              maxLines: 10,
+              decoration: const InputDecoration(
+                hintText: 'e.g. Met Ravi today at 4pm, he asked me to send the report tomorrow.',
+                border: OutlineInputBorder(),
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 16),
-        ElevatedButton.icon(
-          onPressed: () {
-             final parsed = NLPParser.parseSmartText(_smartTextCtrl.text);
-             _saveLog(parsed, _smartTextCtrl.text);
-          },
-          icon: const Icon(Icons.auto_awesome),
-          label: const Text('Analyze & Save'),
-        )
-      ],
+          const SizedBox(height: 16),
+          ElevatedButton.icon(
+            onPressed: () {
+               final parsed = NLPParser.parseSmartText(_smartTextCtrl.text);
+               _saveLog(parsed, _smartTextCtrl.text);
+            },
+            icon: const Icon(Icons.auto_awesome),
+            label: const Text('Analyze & Save'),
+          )
+        ],
+      ),
     );
   }
 
