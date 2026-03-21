@@ -1,0 +1,45 @@
+name: diary_sync
+description: Personal Assistant & Daily Diary Log App with Sync, NLP, and Reminders.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management & DI
+  provider: ^6.1.1
+  
+  # Database
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  
+  # Excel Export
+  excel: ^3.0.0
+  
+  # Sync Engine (mDNS & HTTP Server)
+  shelf: ^1.4.1
+  shelf_router: ^1.1.4
+  http: ^1.1.0
+  bonsoir: ^3.0.0+2 # Local network discovery
+  
+  # NLP & Voice
+  speech_to_text: ^6.3.0
+  
+  # UI & Formatting
+  intl: ^0.18.1
+  flutter_local_notifications: ^16.1.0
+  
+  # Other utilities
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
