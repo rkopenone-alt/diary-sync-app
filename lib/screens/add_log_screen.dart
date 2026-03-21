@@ -121,9 +121,25 @@ class _AddLogScreenState extends State<AddLogScreen> with SingleTickerProviderSt
             child: TextField(
               controller: _smartTextCtrl,
               maxLines: 10,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'e.g. Met Ravi today at 4pm, he asked me to send the report tomorrow.',
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  padding: const EdgeInsets.only(bottom: 8, right: 8),
+                  alignment: Alignment.bottomRight,
+                  icon: Icon(_voiceService.isListening ? Icons.mic : Icons.mic_none, color: Colors.blue, size: 32),
+                  onPressed: () {
+                    if (_voiceService.isListening) {
+                       _voiceService.stopListening();
+                       setState(() {});
+                    } else {
+                       _voiceService.startListening((text) {
+                         setState(() { _smartTextCtrl.text = text; });
+                       });
+                       setState(() {});
+                    }
+                  },
+                ),
               ),
             ),
           ),

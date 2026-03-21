@@ -64,43 +64,63 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-      body: _logs.isEmpty
-          ? const Center(child: Text('No Logs yet. Add one!'))
-          : ListView.builder(
-              itemCount: _logs.length,
-              itemBuilder: (context, index) {
-                final log = _logs[index];
-                return Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: ListTile(
-                    title: Text('${log.date} ${log.time} - ${log.whomMet}'),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(log.description),
-                        if (log.reminderTime != null && log.reminderTime!.isNotEmpty)
-                          Padding(
-                            padding: const EdgeInsets.only(top: 4.0),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.alarm, size: 14, color: Colors.blue),
-                                const SizedBox(width: 4),
-                                Text(
-                                  log.reminderTime!,
-                                  style: const TextStyle(color: Colors.blue, fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          )
-                      ],
-                    ),
-                    trailing: log.isSynced == 1 
-                        ? const Icon(Icons.cloud_done, color: Colors.green, size: 20)
-                        : const Icon(Icons.cloud_upload_outlined, color: Colors.grey, size: 20),
-                  ),
-                );
-              },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Total Entries', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87)),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(color: Colors.blue.shade50, borderRadius: BorderRadius.circular(12)),
+                  child: Text('${_logs.length}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue)),
+                ),
+              ],
             ),
+          ),
+          Expanded(
+            child: _logs.isEmpty
+                ? const Center(child: Text('No Logs yet. Add one!'))
+                : ListView.builder(
+                    itemCount: _logs.length,
+                    itemBuilder: (context, index) {
+                      final log = _logs[index];
+                      return Card(
+                        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        child: ListTile(
+                          title: Text('${log.date} ${log.time} - ${log.whomMet}'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(log.description),
+                              if (log.reminderTime != null && log.reminderTime!.isNotEmpty)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.alarm, size: 14, color: Colors.blue),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        log.reminderTime!,
+                                        style: const TextStyle(color: Colors.blue, fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                            ],
+                          ),
+                          trailing: log.isSynced == 1 
+                              ? const Icon(Icons.cloud_done, color: Colors.green, size: 20)
+                              : const Icon(Icons.cloud_upload_outlined, color: Colors.grey, size: 20),
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.of(context).push(
