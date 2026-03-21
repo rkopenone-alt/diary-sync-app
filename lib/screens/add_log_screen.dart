@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart'; // Ensure uuid is added to pubspec in a real app if we were building it. Wait, I should implement a simple fallback UUID for this code.
 import '../core/database_helper.dart';
 import '../models/log_entry.dart';
 import '../utils/nlp_parser.dart';
