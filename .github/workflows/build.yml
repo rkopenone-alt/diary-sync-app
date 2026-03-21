@@ -29,6 +29,7 @@ jobs:
           sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 21/g' android/app/build.gradle
           sed -i 's/minSdkVersion 16/minSdkVersion 21/g' android/app/build.gradle
           sed -i 's/minSdkVersion 19/minSdkVersion 21/g' android/app/build.gradle
+          perl -0777 -pi -e 's/<application/\n    <uses-permission android:name="android.permission.RECORD_AUDIO"\/>\n    <queries>\n        <intent><action android:name="android.speech.RecognitionService" \/><\/intent>\n    <\/queries>\n    <application/g' android/app/src/main/AndroidManifest.xml
           flutter pub get
           flutter build apk --release
 
