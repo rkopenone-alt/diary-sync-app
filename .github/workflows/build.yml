@@ -25,7 +25,7 @@ jobs:
 
       - name: Configure and Build APK
         run: |
-          flutter create --platforms=android,windows .
+          flutter create --project-name diary_sync --platforms=android,windows .
           flutter pub get
           flutter build apk --release
 
@@ -50,7 +50,7 @@ jobs:
       - name: Configure and Build EXE
         run: |
           flutter config --enable-windows-desktop
-          flutter create --platforms=android,windows .
+          flutter create --project-name diary_sync --platforms=android,windows .
           flutter pub get
           flutter build windows --release
 
