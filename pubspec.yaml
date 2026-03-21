@@ -24,7 +24,7 @@ dependencies:
   shelf: ^1.4.1
   shelf_router: ^1.1.4
   http: ^1.1.0
-  bonsoir: ^3.0.0+2 # Local network discovery
+  bonsoir: ^5.1.11 # Local network discovery
   
   # NLP & Voice
   speech_to_text: ^6.3.0
