@@ -26,6 +26,9 @@ jobs:
       - name: Configure and Build APK
         run: |
           flutter create --project-name diary_sync --platforms=android,windows .
+          sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 21/g' android/app/build.gradle
+          sed -i 's/minSdkVersion 16/minSdkVersion 21/g' android/app/build.gradle
+          sed -i 's/minSdkVersion 19/minSdkVersion 21/g' android/app/build.gradle
           flutter pub get
           flutter build apk --release
 
@@ -58,4 +61,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: diary-sync-windows-exe
-          path: build/windows/runner/Release/
+          path: build/windows/x64/runner/Release/
